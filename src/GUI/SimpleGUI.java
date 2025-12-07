@@ -4,12 +4,9 @@ import Decoder.Decryptor;
 import Decoder.EDecoder;
 import java.awt.*;
 import java.awt.event.*;
-public class SimpleGUI extends Canvas implements MouseListener, KeyListener {
+public class SimpleGUI extends Canvas{
     private final Pannel pannel = new Pannel();
     public SimpleGUI(Decryptor decryptor) {
-
-        addMouseListener(this);
-        addKeyListener(this);
 
         pannel.addComponenet(new Label(20, 90, "Enter name of file:"));
 
@@ -26,10 +23,9 @@ public class SimpleGUI extends Canvas implements MouseListener, KeyListener {
         r2.setGroup(group);
         r3.setGroup(group);
 
-        //pannel.addComponenet(r1);
-        //pannel.addComponenet(r2);
-        //pannel.addComponenet(r3);
-        pannel.addComponenet(group);
+        pannel.addComponenet(r1);
+        pannel.addComponenet(r2);
+        pannel.addComponenet(r3);
 
         TextField loadedText = new TextField(250, 30, 350, 400);
         pannel.addComponenet(loadedText);
@@ -71,29 +67,4 @@ public class SimpleGUI extends Canvas implements MouseListener, KeyListener {
     public void paint(Graphics g) {
         pannel.draw(g);
     }
-
-    @Override
-    public void mouseClicked(MouseEvent e) {
-        for (IComponent c : pannel.getAllComponenets()) {
-            c.onMouseClick(e.getX(), e.getY());
-        }
-        repaint();
-    }
-
-    @Override
-    public void keyTyped(KeyEvent e) {
-        for (IComponent c : pannel.getAllComponenets()) {
-            c.onKeyTyped(e.getKeyChar());
-        }
-        repaint();
-    }
-
-    // Unused required methods
-    public void mousePressed(MouseEvent e) {}
-    public void mouseReleased(MouseEvent e) {}
-    public void mouseEntered(MouseEvent e) {}
-    public void mouseExited(MouseEvent e) {}
-    public void keyPressed(KeyEvent e) {}
-    public void keyReleased(KeyEvent e) {}
-
 }

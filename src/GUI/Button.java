@@ -3,7 +3,6 @@ package GUI;
 import java.awt.*;
 
 public class Button extends Component {
-
     private String text;
     private ICommand onClick;
 
